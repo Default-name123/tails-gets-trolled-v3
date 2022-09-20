@@ -11,6 +11,11 @@ import ui.*;
 import flixel.input.keyboard.FlxKey;
 import flixel.FlxState;
 import haxe.Timer;
+#if android
+import flixel.FlxCamera;
+import flixel.input.actions.FlxActionInput;
+import ui.FlxVirtualPad;
+#end
 
 class MusicBeatState extends FlxUIState
 {
@@ -34,7 +39,37 @@ class MusicBeatState extends FlxUIState
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
+	#if android
+	var _virtualpad:FlxVirtualPad;
 
+	var trackedinputs:Array<FlxActionInput> = [];
+
+	// adding virtualpad to state
+	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
+		_virtualpad = new FlxVirtualPad(DPad, Action);
+		_virtualpad.alpha = 0.75;
+		var padcam = new FlxCamera();
+		FlxG.cameras.add(padcam);
+		padcam.bgColor.alpha = 0;
+		_virtualpad.cameras = [padcam];
+		add(_virtualpad);
+		controls.setVirtualPad(_virtualpad, DPad, Action);
+		trackedinputs = controls.trackedinputs;
+		controls.trackedinputs = [];
+
+		#if android
+		controls.addAndroidBack();
+		#end
+	}
+	
+	override function destroy() {
+		controls.removeFlxInput(trackedinputs);
+
+		super.destroy();
+	}
+	#else
+	public function addVirtualPad(?DPad, ?Action){};
+	#end
 	override function create()
 	{
 		if(lastState!=this){
