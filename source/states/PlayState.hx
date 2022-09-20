@@ -1121,13 +1121,14 @@ class PlayState extends MusicBeatState
 					trace(EngineData.cutscenes.get(curSong).toLowerCase());
 					trace(curSong.toLowerCase());
 					if(EngineData.cutscenes.get(curSong.toLowerCase())!=null){
-						var video = new MP4Handler();
-						video.finishCallback = function()
-						{
+						//var video = new MP4Handler();
+						//video.finishCallback = function()
+						//{
 							startCountdown();
-						}
-						inCutscene=true;
-						video.playVideo(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())));
+						//}
+						//inCutscene=true;
+						//video.playVideo(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())));
+						// i will add videos later
 					}else
 						startCountdown();
 
