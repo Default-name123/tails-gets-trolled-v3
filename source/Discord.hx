@@ -1,7 +1,9 @@
 package;
 
+#if desktop		   
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
+#end	
 
 using StringTools;
 
@@ -9,6 +11,7 @@ class DiscordClient
 {
 	public function new()
 	{
+				#if desktop		   
 		trace("Discord Client starting...");
 		DiscordRpc.start({
 			clientID: "885207099322290226",
@@ -30,11 +33,13 @@ class DiscordClient
 
 	public static function shutdown()
 	{
+				#if desktop		   
 		DiscordRpc.shutdown();
 	}
 
 	static function onReady()
 	{
+				#if desktop		   
 		DiscordRpc.presence({
 			details: "Getting Trolled",
 			state: null,
