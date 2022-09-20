@@ -88,6 +88,10 @@ class SidemenuState extends MusicBeatState
 
 	override function create()
 	{
+        #if android
+        addVirtualPad(FULL, A_B);
+        #end
+        
 		super.create();
 		FlxG.mouse.visible=true;
 
