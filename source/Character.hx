@@ -123,14 +123,10 @@ class Character extends FlxSprite
 		var pathBase = 'assets/characters/data/';
 		var daCharPath = pathBase + charName + ".json";
 		var playerPath = pathBase + charName + "-player.json";
-		if(player && FileSystem.exists(playerPath))daCharPath=playerPath;
+		if(player)daCharPath=playerPath;
 
 		var shit:Null<Dynamic>=null;
-		if(Assets.exists(daCharPath)){
-			shit = Json.parse(Assets.getText(daCharPath));
-		}else if(Assets.exists(pathBase + "dad.json")){
-			shit = Json.parse(Assets.getText(pathBase + "dad.json") );
-		}
+		shit = Json.parse(Assets.getText(daCharPath));
 
 		var format = Reflect.field(shit,"format");
 
@@ -192,7 +188,6 @@ class Character extends FlxSprite
 			var spritesheet = charData.spritesheet;
 			var path = chars + spritesheet;
 
-			if(Assets.exists(path + ".png")){
 				var image = FlxG.bitmap.get(path);
 				if(image==null){
 					image = FlxG.bitmap.add(Assets.getBitmapData(path + ".png"),false,path);
@@ -202,7 +197,6 @@ class Character extends FlxSprite
 				}else if(Assets.exists(path + ".xml")){
 					frames = FlxAtlasFrames.fromSparrow(image, Assets.getText(path + ".xml") );
 				}
-			}
 
 			animOffsets.clear();
 			animation.destroyAnimations();
