@@ -91,9 +91,8 @@ class CachingState extends FlxUIState {
         //imageList = imageList.split(':')[1]; // idk about dpes it needed or no, so is commented for now
         for (file in imageList)
         {
-          file = file.split('assets/images/')[1];
           if(file.endsWith(".png")){ // TODO: recursively go through all directories
-            images.push('assets/images/${file}');
+            images.push('${file}');
           }
         }
     }
@@ -103,9 +102,8 @@ class CachingState extends FlxUIState {
         //charImageList = charImageList.split(':')[1]; // idk about dpes it needed or no, so is commented for now
         for (file in charImageList)
         {
-          file = file.split('assets/characters/images/')[1];
           if(file.endsWith(".png")){
-            images.push('assets/characters/images/${file}');
+            images.push('${file}');
           }
         }
     }
@@ -113,9 +111,8 @@ class CachingState extends FlxUIState {
         var songsList = list.filter(text -> text.contains('assets/songs'));
             for (file in songsList)
             {
-              file = file.split('assets/songs/')[1];
               if(file.endsWith('.mp3') || file.endsWith('.ogg')){
-                sounds.push('assets/songs/${file}');
+                sounds.push('${file}');
               }
             }
       }
@@ -124,18 +121,16 @@ class CachingState extends FlxUIState {
       var musicList = list.filter(text -> text.contains('assets/music'));
         for (file in musicList)
         {
-          file = file.split('assets/music/')[1];
           if(file.endsWith('.mp3') || file.endsWith('.ogg')){
-            sounds.push('assets/music/${file}');
+            sounds.push('${file}');
           }
         }
         
         var sharedMusicList = list.filter(text -> text.contains('assets/shared/music'));
         for (file in sharedMusicList)
         {
-          file = file.split('assets/shared/music/')[1];
           if(file.endsWith('.mp3') || file.endsWith('.ogg')){
-            sounds.push('assets/shared/music/${file}');
+            sounds.push('${file}');
           }
         }
 
@@ -143,17 +138,15 @@ class CachingState extends FlxUIState {
       var soundList = list.filter(text -> text.contains('assets/sounds'));
         for (file in soundList)
         {
-          file = file.split('assets/sounds/')[1];
           if(file.endsWith('.mp3') || file.endsWith('.ogg')){
-            sounds.push('assets/sounds/${file}');
+            sounds.push('${file}');
           }
         }
       var sharedSoundList = list.filter(text -> text.contains('assets/shared/sounds'));
         for (file in sharedSoundList)
         {
-          file = file.split('assets/shared/sounds/')[1];
           if(file.endsWith('.mp3') || file.endsWith('.ogg')){
-            sounds.push('assets/shared/sounds/${file}');
+            sounds.push('${file}');
           }
         }
     }
