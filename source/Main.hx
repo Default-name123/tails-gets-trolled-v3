@@ -81,10 +81,11 @@ class Main extends Sprite
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
-		SUtil.doTheCheck()				   
+		SUtil.doTheCheck();
+		
 		#if !mobile
 		addChild(new ui.FPSMem(10, 3, 0xFFFFFF));
-                #end
+    #end
 		
 	}
 
