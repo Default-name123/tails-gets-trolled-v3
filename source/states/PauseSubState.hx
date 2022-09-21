@@ -82,6 +82,10 @@ class PauseSubState extends MusicBeatSubstate
 			songText.targetY = i;
 			grpMenuShit.add(songText);
 		}
+		
+        #if android
+        addVirtualPad(FULL, A_B);
+        #end
 
 		changeSelection();
 
