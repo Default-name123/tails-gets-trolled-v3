@@ -71,6 +71,8 @@ import llua.Lua;
 import llua.State;
 import llua.LuaL;
 #end
+import flixel.input.actions.FlxActionInput;
+import ui.Hitbox;
 
 import EngineData.WeekData;
 import EngineData.SongData;
@@ -121,6 +123,8 @@ class PlayState extends MusicBeatState
 	public var opponent:Character;
 	public var gf:Character;
 	public var boyfriend:Boyfriend;
+	
+	public var _hitbox:Hitbox;
 
 	public var dbTutorial:FlxSpriteGroup;
 
@@ -1060,6 +1064,23 @@ class PlayState extends MusicBeatState
 
 		upscrollOffset = 50;
 		downscrollOffset = FlxG.height-165;
+		
+				trace(SONG.song.toLowerCase());
+		if (SONG.song.toLowerCase() == "die-batsards") {
+		    _hitbox = new Hitbox(DODGE);
+		} else {
+			_hitbox = new Hitbox(DEFAULT);
+		}
+		controls.setHitBox(_hitbox);
+		var theshit = new FlxCamera();
+		FlxG.cameras.add(theshit);
+		theshit.bgColor.alpha = 0;
+		_hitbox.cameras = [theshit];
+
+		trackedinputs = controls.trackedinputs;
+		controls.trackedinputs = [];
+		_hitbox.visible = false;
+		add(_hitbox);
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -1297,6 +1318,8 @@ class PlayState extends MusicBeatState
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP,keyRelease);
 
 		inCutscene = false;
+		
+	_hitbox.visible = true;
 
 		generateStaticArrows(0, 1);
 		generateStaticArrows(1, 0);
@@ -2816,6 +2839,7 @@ class PlayState extends MusicBeatState
 		inst.volume = 0;
 		vocals.volume = 0;
 		inst.stop();
+		_hitbox.visible = false;
 
 		#if cpp
 		if(lua!=null){
