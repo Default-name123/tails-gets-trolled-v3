@@ -142,6 +142,10 @@ class CreditState extends MusicBeatState  {
     #if desktop
     DiscordClient.changePresence("Looking at the credits", null);
     #end
+    #if android
+    addVirtualPad(FULL, A_B);
+    #end
+    
     super.create();
     var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('credits/gradient'));
     bg.scrollFactor.set();
