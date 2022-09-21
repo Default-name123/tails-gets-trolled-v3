@@ -139,8 +139,6 @@ class CachingState extends FlxUIState {
           }
         }
 
-    }
-
     if(EngineData.options.cacheSounds){
       var soundList = list.filter(text -> text.contains('assets/sounds'));
         for (file in soundList)
