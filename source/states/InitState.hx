@@ -18,6 +18,7 @@ import flixel.math.FlxRect;
 import haxe.Json;
 import sys.FileSystem;
 import ui.*;
+import openfl.utils.Assets;
 using StringTools;
 
 class InitState extends FlxUIState {
@@ -48,7 +49,7 @@ class InitState extends FlxUIState {
   public static function getCharacters(){
     EngineData.characters=[];
     var list = Assets.list();
-    charList = list.filter(text -> text.contains('assets/characters/data'));
+    var charList = list.filter(text -> text.contains('assets/characters/data'));
     for(file in charList){
       if(file.endsWith(".json")){
         var name = file.replace(".json","");
