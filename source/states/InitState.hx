@@ -139,13 +139,11 @@ class InitState extends FlxUIState {
 		Application.current.onExit.add (function (exitCode) {
 			DiscordClient.shutdown();
 		 });
-	#end
+    #end
 
 
     var canCache=false;
-      #if cpp // IDK IF YOU CAN DO "#IF SYS AND CPP" OR THIS'LL WORK I THINK
-        canCache=true;
-      #end
+    canCache=true;
     if(canCache){
       if(!currentOptions.cacheCharacters && !currentOptions.cacheSongs && !currentOptions.cacheSounds  && !currentOptions.cachePreload)
         canCache=false;
