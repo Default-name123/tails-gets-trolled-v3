@@ -4,6 +4,7 @@ import Section.SwagSection;
 import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
+import openfl.utils.Assets as Shit;
 import sys.io.File;
 import flixel.util.typeLimit.OneOfTwo;
 
@@ -54,7 +55,7 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var rawJson = File.getContent(Paths.chart(jsonInput.toLowerCase(),folder.toLowerCase())).trim();
+		var rawJson = Shit.getText(Paths.chart(jsonInput.toLowerCase(),folder.toLowerCase())).trim();
 
 		while (!rawJson.endsWith("}"))
 		{
