@@ -57,11 +57,11 @@ class Paths
 		return 'assets/$file';
 	}
 
-	public static function getDirs(library:String,?base= SUtil.getPath() + getPath('assets/images')){
+	public static function getDirs(library:String,?base='assets/images'){
 	  var folders:Array<String>=[];
 		// TODO: openflassets shit maybe?
-		for(folder in FileSystem.readDirectory('${base}/${library}') ){
-			if(!folder.contains(".") && FileSystem.isDirectory('${base}/${library}/${folder}')){
+		for(folder in OpenFlAssets.readDirectory('${base}/${library}') ){
+			if(!folder.contains(".") && OpenFlAssets.isDirectory('${base}/${library}/${folder}')){
 				folders.push(folder);
 			}
 		}
