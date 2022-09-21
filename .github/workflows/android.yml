@@ -45,7 +45,7 @@ jobs:
         run: |
           haxelib install lime 7.9.0
           haxelib install openfl 9.1.0
-          haxelib install flixel
+          haxelib git flixel https://github.com/sirox228/flixel
           haxelib --never run lime setup
           haxelib install hscript
           haxelib install flixel-ui
