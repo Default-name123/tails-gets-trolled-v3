@@ -118,7 +118,7 @@ class TitleState extends MusicBeatState
 			FlxG.camera.setFilters([new ShaderFilter(highShader.shader)]);
 		}
 
-		var titleNames = Paths.getDirs("titles");
+		var titleNames = ['chaz', 'comic sans', 'cool font', 'crayon', 'echo', 'gd', 'og', 'pixel', 'porn', 'red box lole', 'sadge', 'some rando'];
 		var titleShit = Random.fromArray(titleNames);
 		logoBl = new FlxSprite(0);
 		logoBl.frames = Paths.getSparrowAtlas('titles/${titleShit}/logoBumpin');
