@@ -58,7 +58,8 @@ class Paths
 	}
 
 	public static function getDirs(library:String,?base='assets/images'){
-		var folders:Array<String>=[];
+	  #if desktop
+	  var folders:Array<String>=[];
 		// TODO: openflassets shit maybe?
 		for(folder in FileSystem.readDirectory('${base}/${library}') ){
 			if(!folder.contains(".") && FileSystem.isDirectory('${base}/${library}/${folder}')){
@@ -66,6 +67,7 @@ class Paths
 			}
 		}
 		return folders;
+		#end
 	}
 
 	// SLIGHTLY BASED ON https://github.com/Yoshubs/Forever-Engine/blob/master/source/ForeverTools.hx
