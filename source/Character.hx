@@ -195,7 +195,7 @@ class Character extends FlxSprite
 			if(Assets.exists(path + ".png")){
 				var image = FlxG.bitmap.get(path);
 				if(image==null){
-					image = FlxG.bitmap.add(BitmapData.fromAsset(path + ".png"),false,path);
+					image = FlxG.bitmap.add(Assets.getBitmapData(path + ".png"),false,path);
 				}
 				if(Assets.exists(path + ".txt")){
 					frames = FlxAtlasFrames.fromSpriteSheetPacker(image, Assets.getText(path + ".txt") );
