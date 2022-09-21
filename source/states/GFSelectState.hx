@@ -140,6 +140,10 @@ class GFSelectState extends MusicBeatState
     characters.members[selectedChar].visible=true;
     topbars.members[selectedChar].visible=true;
     whore = characters.members[selectedChar];
+    
+    #if android
+    addVirtualPad(LEFT_RIGHT, A_B);
+    #end
   }
 
   override function beatHit(){
