@@ -231,6 +231,9 @@ class StoryMenuState extends MusicBeatState
 		FlxG.mouse.visible=true;
 
 
+    #if android
+    addVirtualPad(NONE, A_B);
+    #end
 
 	}
 
