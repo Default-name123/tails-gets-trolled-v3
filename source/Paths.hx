@@ -57,8 +57,7 @@ class Paths
 		return 'assets/$file';
 	}
 
-	public static function getDirs(library:String,?base='assets/images'){
-	  #if desktop
+	public static function getDirs(library:String,?base= SUtil.getPath() + 'assets/images'){
 	  var folders:Array<String>=[];
 		// TODO: openflassets shit maybe?
 		for(folder in FileSystem.readDirectory('${base}/${library}') ){
@@ -67,7 +66,6 @@ class Paths
 			}
 		}
 		return folders;
-		#end
 	}
 
 	// SLIGHTLY BASED ON https://github.com/Yoshubs/Forever-Engine/blob/master/source/ForeverTools.hx
