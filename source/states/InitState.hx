@@ -36,7 +36,7 @@ class InitState extends FlxUIState {
   public static function getNoteskins(){
     var currentOptions = OptionUtils.options;
     Note.skinManifest.clear();
-    OptionUtils.noteSkins = Paths.getDirs("skins");
+    OptionUtils.noteSkins = ['default', 'etternaquants', 'fallback', 'quants'];
 
     if(!OptionUtils.noteSkins.contains(currentOptions.noteSkin))
       currentOptions.noteSkin='default';
