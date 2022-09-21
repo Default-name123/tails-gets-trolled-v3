@@ -53,7 +53,7 @@ jobs:
           haxelib git faxe https://github.com/uhrobots/faxe          
           haxelib git linc_luajit https://github.com/Sirox228/linc_luajit_backup --quiet
           haxelib git extension-webm https://github.com/Sirox228/extension-webm
-          haxelib git extension-androidtools https://github.com/randomxdp/extension-androidtools.git
+          haxelib git extension-androidtools https://github.com/majigsaw77/extension-androidtools.git
           haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
           haxelib git crashdumper http://github.com/larsiusprime/crashdumper
           haxelib git extension-androidtools https://github.com/randomxdp/extension-androidtools.git
