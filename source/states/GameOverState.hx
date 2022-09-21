@@ -23,6 +23,10 @@ class GameOverState extends FlxTransitionableState
 
 	override function create()
 	{
+	  #if android
+    addVirtualPad(FULL, A_B);
+    #end
+        
 		super.create();
 		/* var loser:FlxSprite = new FlxSprite(100, 100);
 			var loseTex = FlxAtlasFrames.fromSparrow(AssetPaths.lose.png, AssetPaths.lose.xml);
