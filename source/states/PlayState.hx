@@ -388,10 +388,10 @@ class PlayState extends MusicBeatState
 			
 			Lua_helper.add_callback(lua.state, "initModule", function(path:String)
             {
-	            var shit = LuaL.dostring(lua, openfl.utils.Assets.getText(path));
+	            var shit = LuaL.dostring(lua.state, openfl.utils.Assets.getText(path));
 	            if (shit != 0)
 		        {
-			        Application.current.window.alert("LUA COMPILE ERROR:\n" + Lua.tostring(lua, shit), "Kade Engine Modcharts");
+			        Application.current.window.alert("LUA COMPILE ERROR:\n" + Lua.tostring(lua.state, shit), "Andromeda Engine Modcharts");
 			        System.exit(0);
 		        }
             });
