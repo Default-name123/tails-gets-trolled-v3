@@ -386,7 +386,7 @@ class PlayState extends MusicBeatState
 				FlxG.log.add(string);
 			});
 			
-			Lua_helper.add_callback(lua, "initModule", function(path:String)
+			Lua_helper.add_callback(lua.state, "initModule", function(path:String)
             {
 	            var shit = LuaL.dostring(lua, openfl.utils.Assets.getText(path));
 	            if (shit != 0)
