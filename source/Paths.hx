@@ -57,7 +57,7 @@ class Paths
 		return 'assets/$file';
 	}
 
-	public static function getDirs(library:String,?base=Main.path + "assets/images"){
+	public static function getDirs(library:String,?base='assets/images'){
 		var folders:Array<String>=[];
 		// TODO: openflassets shit maybe?
 		for(folder in FileSystem.readDirectory('${base}/${library}') ){
