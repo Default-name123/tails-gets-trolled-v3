@@ -57,6 +57,7 @@ jobs:
           haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
           haxelib git crashdumper http://github.com/larsiusprime/crashdumper
           haxelib git extension-androidtools https://github.com/randomxdp/extension-androidtools.git
+          haxelib git hxCodec https://github.com/polybiusproxy/hxcodec
           haxelib install actuate
           haxelib install newgrounds            
           haxelib list

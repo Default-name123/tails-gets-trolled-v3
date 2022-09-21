@@ -73,6 +73,8 @@ import llua.LuaL;
 #end
 import flixel.input.actions.FlxActionInput;
 import ui.Hitbox;
+import lime.app.Application;
+import flash.system.System;
 
 import EngineData.WeekData;
 import EngineData.SongData;
@@ -383,6 +385,16 @@ class PlayState extends MusicBeatState
 			Lua_helper.add_callback(lua.state,"log", function(string:String){
 				FlxG.log.add(string);
 			});
+			
+			Lua_helper.add_callback(lua, "initModule", function(path:String)
+            {
+	            var shit = LuaL.dostring(lua, openfl.utils.Assets.getText(path));
+	            if (shit != 0)
+		        {
+			        Application.current.window.alert("LUA COMPILE ERROR:\n" + Lua.tostring(lua, shit), "Kade Engine Modcharts");
+			        System.exit(0);
+		        }
+            });
 
 			Lua_helper.add_callback(lua.state,"playSound", function(sound:String,volume:Float=1,looped:Bool=false){
 				FlxG.sound.play(sound,volume,looped);
@@ -493,7 +505,7 @@ class PlayState extends MusicBeatState
 
 			// this catches compile errors
 			try {
-				lua.runFile(Paths.modchart(songData.chartName.toLowerCase()));
+				lua.run(openfl.utils.Assets.getText(Paths.modchart(songData.chartName.toLowerCase())));
 			}catch (e:Exception){
 				FlxG.log.advanced(e, EngineData.LUAERROR, true);
 			};
@@ -547,7 +559,7 @@ class PlayState extends MusicBeatState
 
 		//lua = new LuaVM();
 		#if cpp
-			luaModchartExists = FileSystem.exists(Paths.modchart(songData.chartName.toLowerCase()));
+			luaModchartExists = openfl.utils.Assets.exists(Paths.modchart(songData.chartName.toLowerCase()));
 		#end
 
 		trace(luaModchartExists);
@@ -1142,14 +1154,14 @@ class PlayState extends MusicBeatState
 					trace(EngineData.cutscenes.get(curSong).toLowerCase());
 					trace(curSong.toLowerCase());
 					if(EngineData.cutscenes.get(curSong.toLowerCase())!=null){
-						//var video = new MP4Handler();
-						//video.finishCallback = function()
-						//{
+						var video = new VideoHandler();
+						video.finishCallback = function()
+						{
 							startCountdown();
-						//}
-						//inCutscene=true;
-						//video.playVideo(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())));
-						// i will add videos later
+						}
+						inCutscene=true;
+						video.playVideo(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())));
+						// videos xd
 					}else
 						startCountdown();
 

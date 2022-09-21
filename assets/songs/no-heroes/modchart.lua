@@ -1,10 +1,4 @@
-local function require(module)
-	local file = debug.getinfo(1).source
-	local directory = file:sub(2,#file-12)
-	-- TODO: _FILEDIRECTORY
-	return getfenv().require(directory .. module)
-end
-local tweenObj = require("tween")
+local tweenObj = initModule("assets/songs/no-heroes/tween.lua")
 local tweens = {}
 
 function tween(obj,properties,time,style)

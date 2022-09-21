@@ -17,6 +17,7 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import lime.system.System;
+import sys.FileSystem;
 
 using StringTools;
 
@@ -33,7 +34,16 @@ class Main extends Sprite
 	var skipSplash:Bool = true; // CRINGE! Why would you hide it????
 	#end
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
-	public static var path:String = System.applicationStorageDirectory;
+	/*public static var path:String = System.applicationStorageDirectory; 
+	    use Generic.returnPath() instead, it's better*/
+	
+	static final videoFiles:Array<String> = [
+		"dumbassLearnt",
+		"shadowAndKnucklesGetHigh",
+		"sonicGetsTrolled",
+		"tailsGetsTrolled",
+		"tastyBlood",
+	];
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -46,7 +56,8 @@ class Main extends Sprite
 	{
 		super();
 
-		SUtil.gameCrashCheck();								
+		Generic.initCrashHandler();
+		
 		if (stage != null)
 		{
 			init();
@@ -80,14 +91,22 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
+		
+		Generic.mode = ROOTDATA;
+		if (!FileSystem.exists(Generic.returnPath() + 'assets')) {
+			FileSystem.createDirectory(Generic.returnPath() + 'assets');
+		}
+		if (!FileSystem.exists(Generic.returnPath() + 'assets/videos')) {
+			FileSystem.createDirectory(Generic.returnPath() + 'assets/videos');
+		}
+
+        for (vid in videoFiles) {
+			Generic.copyContent(Paths._video(vid), Paths._video(vid));
+		}
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
-
-		SUtil.doTheCheck();
 		
-		#if !mobile
 		addChild(new ui.FPSMem(10, 3, 0xFFFFFF));
-    #end
 		
 	}
 
