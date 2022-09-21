@@ -120,7 +120,7 @@ class Character extends FlxSprite
 	}
 
 	public static function getJSON(charName:String,player:Bool=false):CharJson{
-		var pathBase = 'assets/characters/data/';
+		var pathBase = 'characters:assets/characters/data/';
 		var daCharPath = pathBase + charName + ".json";
 		var playerPath = pathBase + charName + "-player.json";
 		if(player)daCharPath=playerPath;
@@ -180,8 +180,8 @@ class Character extends FlxSprite
 	}
 	public function setCharData(){
 		if(charData!=null){
-			var chars = "assets/characters/images/";
-			var pathBase = "assets/characters/data/";
+			var chars = "characters:assets/characters/images/";
+			var pathBase = "characters:assets/characters/data/";
 
 			var playerPath = pathBase + curCharacter + "-player.json";
 
@@ -200,7 +200,7 @@ class Character extends FlxSprite
 
 			animOffsets.clear();
 			animation.destroyAnimations();
-			var offsetPath = "assets/characters/images/"+curCharacter+"Offsets.txt";
+			var offsetPath = "characters:assets/characters/images/"+curCharacter+"Offsets.txt";
 			var defaultOffsets:Map<String,Array<Float>>=[];
 			if(Assets.exists(offsetPath)){
 				var offsets = CoolUtil.coolTextFile2(Assets.getText(offsetPath));
