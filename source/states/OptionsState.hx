@@ -137,6 +137,11 @@ class OptionsState extends MusicBeatState
 	}
 	override function create()
 	{
+	  
+        #if android
+        addVirtualPad(FULL, A_B);
+        #end
+        
 		super.create();
 		#if desktop
 		// Updating Discord Rich Presence
