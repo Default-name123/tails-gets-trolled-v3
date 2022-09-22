@@ -106,6 +106,7 @@ class StoryMenuState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 			}
 			isCutscene=true;
+                        Application.current.window.alert(Paths.video(icon.cutscene), 'debug trace');
 			video.playVideo(Paths.video(icon.cutscene));
 			// cutscenes are workimg dunno
 
