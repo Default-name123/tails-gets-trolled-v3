@@ -2890,7 +2890,7 @@ class PlayState extends MusicBeatState
                         handleInput(3);
                         updateReceptors();
                 }
-                if (if (SONG.song.toLowerCase() == "die-batsards") {
+                if (SONG.song.toLowerCase() == "die-batsards") {
                         if (_hitbox.buttonDodge.justPressed) {
                                 handleInput(4);
                         }
