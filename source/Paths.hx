@@ -74,7 +74,7 @@ class Paths
 	// TRY FOREVER ENGINE, SERIOUSLY!
 
 	public static function noteskinManifest(skin:String,?library:String='skins'):Note.SkinManifest{
-		var path = '${library}:assets/images/${library}/${skin}/metadata.json';
+		var path = 'default:assets/images/${library}/${skin}/metadata.json';
 		return Json.parse(OpenFlAssets.getText(path));
 		/*}else if(FileSystem.exists(path)){
 			return Json.parse(File.getContent(path));
@@ -92,7 +92,7 @@ class Paths
                 if(noteType!='' && noteType!='default' && noteType!='receptor') {
                         noteTypeThing = noteType + '/';
                 }
-                return 'default:assets/images/skins/${skin}/${modifier}/${noteTypeThing}${key}
+                return 'default:assets/images/skins/${skin}/${modifier}/${noteTypeThing}${key}'
 
                 // (sirox) fuck this
 		/*var pathsNotetype:Array<String> = [
