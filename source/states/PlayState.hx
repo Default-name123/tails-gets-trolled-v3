@@ -503,7 +503,7 @@ class PlayState extends MusicBeatState
 				FlxG.log.advanced(error, EngineData.LUAERROR, true);
 			}
 
-			lua.run(openfl.utils.Assets.getText(Paths.modchart(songData.chartName.toLowerCase())));
+			lua.run(openfl.utils.Assets.getText('songs:' + Paths.modchart(songData.chartName.toLowerCase())));
 		}
 	}
 
@@ -554,7 +554,7 @@ class PlayState extends MusicBeatState
 
 		//lua = new LuaVM();
 		#if cpp
-			luaModchartExists = openfl.utils.Assets.exists(Paths.modchart(songData.chartName.toLowerCase()));
+			luaModchartExists = openfl.utils.Assets.exists('songs:' + Paths.modchart(songData.chartName.toLowerCase()));
 		#end
 
 		trace(luaModchartExists);
@@ -656,11 +656,11 @@ class PlayState extends MusicBeatState
 					"Only then I will even CONSIDER letting you\ndate my daughter!"
 				];
 			default:
-				try {
+				/*try {
 					dialogue = CoolUtil.coolTextFile2(Assets.getText('songs:' + Paths.dialogue(songData.chartName.toLowerCase() + "/dialogue")));
 				} catch(e){
 					trace("epic style " + e.message);
-				}
+				}*/
 		}
 
 		#if desktop
