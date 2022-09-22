@@ -18,6 +18,7 @@ import flixel.tweens.FlxEase;
 import openfl.display.Shape;
 import openfl.display.BitmapData;
 import flixel.util.FlxColor;
+import Options.OptionUtils;
 
 // copyed from flxvirtualpad
 class Hitbox extends FlxSpriteGroup
