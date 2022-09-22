@@ -152,12 +152,16 @@ class JudgeCustomizationState extends MusicBeatState {
 
   var touchX:Float;
   var touchY:Float;
+  var deltaX:Float;
+  var deltaY:Float;
   override function update(elapsed){
     var touch = FlxG.touches.list[0];
-    var deltaX = touchX-touch.screenX;
-    var deltaY = touchY-touch.screenY;
-    touchX = touch.screenX;
-    touchY = touch.screenY;
+    if (touch != null) {
+            deltaX = touchX-touch.screenX;
+            deltaY = touchY-touch.screenY;
+            touchX = touch.screenX;
+            touchY = touch.screenY;
+    }
     if(controls.BACK || controls.ACCEPT){
       if(controls.ACCEPT){
         EngineData.options.judgeX = judgePlacementPos.x;
@@ -168,11 +172,11 @@ class JudgeCustomizationState extends MusicBeatState {
     }
 
 
-    if(touch.overlaps(judge) && touch.justPressed){
+    if(touch != null && touch.overlaps(judge) && touch.justPressed){
       draggingJudge=true;
     }
 
-    if(touch.justReleased){
+    if(touch != null && touch.justReleased){
       draggingJudge=false;
     }
 
@@ -188,7 +192,7 @@ class JudgeCustomizationState extends MusicBeatState {
     }
 
     if(draggingJudge){
-      if(touch.pressed){
+      if(touch != null && touch.pressed){
         judgePlacementPos.x -= deltaX;
         judgePlacementPos.y -= deltaY;
       }else{
