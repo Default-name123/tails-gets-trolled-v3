@@ -205,7 +205,7 @@ class SidemenuState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if (controls.BACK)
+		if (controls.BACK || FlxG.android.justReleased.BACK)
 		{
 			FlxG.switchState(new MainMenuState());
 		}
