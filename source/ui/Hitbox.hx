@@ -33,16 +33,20 @@ class Hitbox extends FlxSpriteGroup
     public var buttonUp:FlxButton;
     public var buttonRight:FlxButton;
     public var buttonDodge:FlxButton;
+
+    var currentOptions:Options;
     
     public function new(mode:Modes)
     {
         super();
 
+        currentOptions = OptionUtils.options;
+
         /*if (widghtScreen == null)
             widghtScreen = FlxG.width;*/
 
-        final offsetFir:Int = (Options.mechsInputVariants ? Std.int(FlxG.height / 4) * 3 : 0);
-		final offsetSec:Int = (Options.mechsInputVariants ? 0 : Std.int(FlxG.height / 4));
+        final offsetFir:Int = (currentOptions.mechsInputVariants ? Std.int(FlxG.height / 4) * 3 : 0);
+		final offsetSec:Int = (currentOptions.mechsInputVariants ? 0 : Std.int(FlxG.height / 4));
 		
         //add graphic
         hitbox = new FlxSpriteGroup();
@@ -105,11 +109,11 @@ class Hitbox extends FlxSpriteGroup
 
     
         button.onDown.callback = function (){
-            FlxTween.num(0, Options.hitboxOpacity, .075, {ease: FlxEase.circInOut}, function (a:Float) { button.alpha = a; });
+            FlxTween.num(0, currentOptions.hitboxOpacity, .075, {ease: FlxEase.circInOut}, function (a:Float) { button.alpha = a; });
         };
 
         button.onUp.callback = function (){
-            FlxTween.num(Options.hitboxOpacity, 0, .1, {ease: FlxEase.circInOut}, function (a:Float) { button.alpha = a; });
+            FlxTween.num(currentOptions.hitboxOpacity, 0, .1, {ease: FlxEase.circInOut}, function (a:Float) { button.alpha = a; });
         }
         
         button.onOut.callback = function (){
