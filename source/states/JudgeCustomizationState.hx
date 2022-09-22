@@ -155,7 +155,7 @@ class JudgeCustomizationState extends MusicBeatState {
   override function update(elapsed){
     var touch = FlxG.touches.list[0];
     var deltaX = touchX-touch.screenX;
-    var deltaY = toucyY-touch.screenY;
+    var deltaY = touchY-touch.screenY;
     touchX = touch.screenX;
     touchY = touch.screenY;
     if(controls.BACK || controls.ACCEPT){
