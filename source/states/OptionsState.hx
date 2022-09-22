@@ -87,7 +87,7 @@ class OptionsState extends MusicBeatState
 				new OptionCategory("Effects",[
 					new ToggleOption("ruinMod","Ruin the mod","Ruins the mod.")
 				]),
-                                new StepOption("hitboxOpacity","Hitbox Opacity',1,0,100,"%","","Customize your Hitboxes Opacity", true),
+                                new StepOption("hitboxOpacity","Hitbox Opacity",1,0,100,"%","","Customize your Hitboxes Opacity", true),
 			]),
 			new OptionCategory("Preferences",[
 				new ToggleOption("useNotesplashes","Show NoteSplashes","Notesplashes showing up on sicks and above."),
