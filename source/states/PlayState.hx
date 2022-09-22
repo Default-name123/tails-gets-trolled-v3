@@ -1349,8 +1349,8 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
-		//FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN,keyPress);
-		//FlxG.stage.addEventListener(KeyboardEvent.KEY_UP,keyRelease);
+		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN,keyPress);
+		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP,keyRelease);
 
 		inCutscene = false;
 		
@@ -2872,6 +2872,27 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
 		#end
+
+                // (sirox) i hate input system in andromeda, cuz i need to remake it for each port
+                if (controls.LEFT_P) {
+                        handleInput(0);
+                        updateReceptors();
+                }
+                if (cotrols.DOWN_P) {
+                        handleInput(1);
+                        updateReceptors();
+                }
+                if (controls.UP_P) {
+                        handleInput(2);
+                        updateReceptors();
+                }
+                if (cotrols.RIGHT_P) {
+                        handleInput(3);
+                        updateReceptors();
+                }
+                if (_hitbox.buttonDodge.justPressed) {
+                        handleInput(4);
+                }
 	}
 
 	function endSong():Void
