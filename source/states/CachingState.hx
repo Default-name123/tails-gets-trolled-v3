@@ -212,6 +212,9 @@ class CachingState extends FlxUIState {
         var msg:Null<String> = Thread.readMessage(false);
         if(msg!=null && msg!=recentlyLoadedSnd){
           recentlyLoadedSnd=msg;
+          if (msg.contains('/songs/') && !msg.startsWith('songs:')) {
+                  msg = 'songs:' + msg;
+          }
           if(Assets.exists(msg, AssetType.SOUND) || Assets.exists(msg, AssetType.MUSIC)){ // https://github.com/HaxeFlixel/flixel/blob/master/flixel/system/frontEnds/SoundFrontEnd.hx
             var sound = FlxG.sound.cache(msg);
             CoolUtil.cacheSound(msg,sound);
