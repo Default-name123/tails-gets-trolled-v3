@@ -662,7 +662,7 @@ class PlayState extends MusicBeatState
 				];
 			default:
 				try {
-					dialogue = CoolUtil.coolTextFile2(File.getContent(Paths.dialogue(songData.chartName.toLowerCase() + "/dialogue")));
+					dialogue = CoolUtil.coolTextFile2(Assets.getText('songs:' + Paths.dialogue(songData.chartName.toLowerCase() + "/dialogue")));
 				} catch(e){
 					trace("epic style " + e.message);
 				}
@@ -709,12 +709,8 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText + songData.displayName + " (" + storyDifficultyText + ")", iconRPC);
 		#end
-		try{
-			vcrDistortionHUD = new VCRDistortionEffect();
-			vcrDistortionGame = new VCRDistortionEffect();
-		}catch(e:Any){
-			trace(e);
-		}
+		vcrDistortionHUD = new VCRDistortionEffect();
+		vcrDistortionGame = new VCRDistortionEffect();
 
 		noteModifier='base';
 		uiModifier='base';
@@ -934,7 +930,7 @@ class PlayState extends MusicBeatState
 		loadedShotAnims=[];
 		loadedKillShots=[];
 
-		if(FileSystem.exists(Paths.chart("shots",songData.chartName.toLowerCase()))){
+		if(Assets.exists('songs:' + Paths.chart("shots",songData.chartName.toLowerCase()))){
 			var shit = Song.loadFromJson("shots",songData.chartName.toLowerCase());
 
 			// LOADING SHOT ANIMATIONS IN!
@@ -1077,7 +1073,7 @@ class PlayState extends MusicBeatState
 		upscrollOffset = 50;
 		downscrollOffset = FlxG.height-165;
 		
-				trace(SONG.song.toLowerCase());
+		trace(SONG.song.toLowerCase());
 		if (SONG.song.toLowerCase() == "die-batsards") {
 		    _hitbox = new Hitbox(DODGE);
 		} else {
@@ -1153,7 +1149,7 @@ class PlayState extends MusicBeatState
 				default:
 					trace(EngineData.cutscenes.get(curSong).toLowerCase());
 					trace(curSong.toLowerCase());
-					if(EngineData.cutscenes.get(curSong.toLowerCase())!=null){
+					/*if(EngineData.cutscenes.get(curSong.toLowerCase())!=null){
 						var video = new VideoHandler();
 						video.finishCallback = function()
 						{
@@ -1162,7 +1158,7 @@ class PlayState extends MusicBeatState
 						inCutscene=true;
 						video.playVideo(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())));
 						// videos xd
-					}else
+					}else*/
 						startCountdown();
 
 			}
