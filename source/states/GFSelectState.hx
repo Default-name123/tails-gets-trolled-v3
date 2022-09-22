@@ -142,7 +142,7 @@ class GFSelectState extends MusicBeatState
     whore = characters.members[selectedChar];
     
     #if android
-    addVirtualPad(LEFT_RIGHT, A_B);
+    addVirtualPad(LEFT_RIGHT, A);
     #end
   }
 
