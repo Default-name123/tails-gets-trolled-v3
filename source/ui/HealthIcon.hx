@@ -6,6 +6,7 @@ import sys.FileSystem;
 import flixel.FlxG;
 import haxe.Json;
 import flash.display.BitmapData;
+import openfl.utils.Assets;
 using StringTools;
 
 class HealthIcon extends FlxSprite
@@ -20,16 +21,16 @@ class HealthIcon extends FlxSprite
 	public var daSize:Float = 150;
 
 	public function changeCharacter(char:String){
-		var path = 'assets/characters/icons/${char}';
+		var path = 'characters:assets/characters/icons/${char}';
 		var charArray:Array<Int> = [];
 		var image:Null<FlxGraphicAsset>=null;
 		if(FlxG.bitmap.get(path)!=null){
 			image = FlxG.bitmap.get(path);
-		}else if(FileSystem.exists(path + ".png")){
-			image = FlxG.bitmap.add(BitmapData.fromFile(path + ".png"),false,path);
-		}else if(FileSystem.exists("assets/characters/icons/face.png")){
+		}else if(Assets.exists(path + ".png")){
+			image = FlxG.bitmap.add(Assets.getBitmapData(path + ".png"),false,path);
+		}else if(Assets.exists("characters:assets/characters/icons/face.png")){
 			FlxG.log.warn('${char} is not a valid icon name. Using fallback');
-			image = FlxG.bitmap.add(BitmapData.fromFile("assets/characters/icons/face.png"),false,path);
+			image = FlxG.bitmap.add(Assets.getBitmapData("characters:assets/characters/icons/face.png"),false,path);
 		}else{
 			FlxG.log.error("Can't find fallback icon and " + char + " is not a valid icon name. Expect a crash lol");
 			trace("Can't find fallback icon and " + char + " is not a valid icon name. Expect a crash lol");
