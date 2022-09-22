@@ -314,8 +314,6 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
 
-                addVirtualPad(NONE, B);
-
 	}
 
 	public function addSongData(songData:EngineData.SongData){
