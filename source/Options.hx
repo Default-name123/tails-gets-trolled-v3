@@ -105,6 +105,8 @@ class Options
 	public var loadModcharts:Bool = true;
 	public var noFail:Bool = false;
 	public var useEpic:Bool = true;
+        public var mechsInputVariants:Bool = true;
+        public var hitboxOpacity:Float = 0.3;
 
 	// appearance
 	public var useNotesplashes:Bool = true;
