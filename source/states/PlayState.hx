@@ -1144,7 +1144,7 @@ class PlayState extends MusicBeatState
 				default:
 					trace(EngineData.cutscenes.get(curSong).toLowerCase());
 					trace(curSong.toLowerCase());
-					/*if(EngineData.cutscenes.get(curSong.toLowerCase())!=null){
+					if(EngineData.cutscenes.get(curSong.toLowerCase())!=null){
 						var video = new VideoHandler();
 						video.finishCallback = function()
 						{
@@ -1153,7 +1153,7 @@ class PlayState extends MusicBeatState
 						inCutscene=true;
 						video.playVideo(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())));
 						// videos xd
-					}else*/
+					}else
 						startCountdown();
 
 			}
