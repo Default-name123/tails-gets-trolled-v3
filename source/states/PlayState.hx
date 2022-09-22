@@ -1588,7 +1588,8 @@ class PlayState extends MusicBeatState
 		// STUPID AMERICANS I WANNA NAME THE FILE BEHAVIOUR BUT I CANT
 		// DUMB FUCKING AMERICANS CANT JUST ADD A 'U' >:(
 
-		Note.noteBehaviour = Json.parse(Paths.noteSkinText("behaviorData.json",'skins',currentOptions.noteSkin,noteModifier));
+                Application.current.window.alert('generate song\nstarting', 'debug trace');
+		Note.noteBehaviour = Json.parse(Assets.getText('default:assets/images/skins/${currentOptions.noteSkin}/${noteModifier}/behaviorData.json'));
 		Note.defaultModifier = noteModifier;
 
 		var dynamicColouring:Null<Bool> = Note.noteBehaviour.receptorAutoColor;
@@ -1629,6 +1630,8 @@ class PlayState extends MusicBeatState
 
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(inst);
+
+                Application.current.window.alert('generate song\nsound done', 'debug trace');
 
 		renderedNotes = new FlxTypedGroup<Note>();
 		add(renderedNotes);
@@ -1765,11 +1768,12 @@ class PlayState extends MusicBeatState
 
 		unspawnNotes.sort(sortByShit);
 
-
+                Application.current.window.alert('generate song\nnotes done', 'debug trace');
 
 		generatedMusic = true;
 
 		updateAccuracy();
+                Application.current.window.alert('generate song\nupdated accuracy', 'debug trace');
 	}
 
 	function sortByShit(Obj1:Note, Obj2:Note):Int
