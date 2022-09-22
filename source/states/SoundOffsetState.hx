@@ -71,7 +71,7 @@ class SoundOffsetState extends MusicBeatState
     metronome.y += 100;
     add(metronome);
 
-
+    
   }
 
   override function beatHit(){
