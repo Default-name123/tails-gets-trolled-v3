@@ -108,9 +108,21 @@ class DisclaimerSubstate extends MusicBeatSubstate {
   }
 
   override function update(elapsed:Float){
+                #if mobile
+		var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+		{
+			justTouched = false;
+
+			if (touch.justPressed){
+				justTouched = true;
+			}
+		}
+		#end
     super.update(elapsed);
     if(canInput){
-      if(FlxG.keys.justPressed.ANY && discStage==0){
+      if(justTouched && discStage==0){
         canInput=false;
         FlxTween.tween(disc1, {alpha: 0}, 0.35, {ease: FlxEase.quadOut, onComplete:function(twn:FlxTween){
           FlxTween.tween(disc2, {alpha: 1}, 0.35, {ease: FlxEase.quadOut, onComplete:function(twn:FlxTween){
