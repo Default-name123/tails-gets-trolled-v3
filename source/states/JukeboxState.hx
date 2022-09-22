@@ -280,7 +280,7 @@ class JukeboxState extends MusicBeatState {
 
     texts.y = lerp(texts.y,-scroll,Main.adjustFPS(.1));
 
-    if (controls.BACK)
+    if (controls.BACK || FlxG.android.justReleased.BACK)
     {
       // TODO: save jukebox selection
       FlxG.switchState(new MainMenuState());
