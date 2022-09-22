@@ -51,7 +51,7 @@
 		0
 	],
 	"singDur": 4,
-	"flipX": true,
+	"flipX": false,
 	"antialiasing": true,
 	"iconName": "bf-ch3",
 	"beatDancer": false,
