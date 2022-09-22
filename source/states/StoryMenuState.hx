@@ -99,7 +99,7 @@ class StoryMenuState extends MusicBeatState
 
 	function startShit(icon:StoryIcon){
 		PlayState.setStoryWeek(icon.weekData,1);
-		if(icon.cutscene!=''){
+		/*if(icon.cutscene!=''){
 			var video = new VideoHandler();
 			video.finishCallback = function()
 			{
@@ -109,9 +109,9 @@ class StoryMenuState extends MusicBeatState
 			video.playVideo(Paths.video(icon.cutscene));
 			// cutscenes are workimg dunno
 
-		}else{
+		}else{*/
 			LoadingState.loadAndSwitchState(new PlayState());
-		}
+		//}
 
 	}
 
