@@ -141,7 +141,7 @@ class SoundOffsetState extends MusicBeatState
       if(controls.LEFT_P){
         currOffset--;
       };
-      if(conteols.RIGHT_P){
+      if(controls.RIGHT_P){
         currOffset++;
       };
       if(controls.UP){
