@@ -50,7 +50,7 @@ class OptionsState extends MusicBeatState
 				new ToggleOption("resetKey","Reset key","Toggle pressing the bound key to instantly die"),
 				new ToggleOption("ghosttapping","Ghost-tapping","Allows you to press keys while no notes are able to be hit."),
 				new ToggleOption("failForMissing","Sudden Death","FC or die"),
-                                new ToggleOption("mechsInputVariants","On - dodge hitbox at the bottom, off - dodge hitbox at the top"),
+                                new ToggleOption("mechsInputVariants","Dodge Hitbox Position","On - dodge hitbox at the bottom, off - dodge hitbox at the top"),
 				#if !NO_BOTPLAY new ToggleOption("botPlay","BotPlay","Let a bot play for you"), #end
 				#if !NO_FREEPLAY_MODS
 				new OptionCategory("Freeplay Modifiers",[
@@ -87,7 +87,7 @@ class OptionsState extends MusicBeatState
 				new OptionCategory("Effects",[
 					new ToggleOption("ruinMod","Ruin the mod","Ruins the mod.")
 				]),
-                                new StepOption("hitboxOpacity","Hitbox Opacity",1,0,100,"%","","Customize your Hitboxes Opacity", true),
+                                new StepOption("hitboxOpacity","Hitbox Opacity",0.01,0,1,"","","Customize your Hitboxes Opacity", false),
 			]),
 			new OptionCategory("Preferences",[
 				new ToggleOption("useNotesplashes","Show NoteSplashes","Notesplashes showing up on sicks and above."),
