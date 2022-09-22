@@ -1,4 +1,4 @@
-local tweenObj = initModule("assets/songs/no-bitches-matasaki/tween.lua")
+local tweenObj = initModule("songs:/songs/no-bitches-matasaki/tween.lua")
 local tweens = {}
 
 function tween(obj,properties,time,style)
