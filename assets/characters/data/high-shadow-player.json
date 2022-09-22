@@ -142,7 +142,7 @@
 	],
 	"spritesheet": "shadow wielder",
 	"singDur": 6.1,
-	"flipX": false,
+	"flipX": true,
 	"antialiasing": true,
 	"iconName": "shadowhigh",
 	"beatDancer": false,
