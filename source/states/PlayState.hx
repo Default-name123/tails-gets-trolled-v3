@@ -2878,7 +2878,7 @@ class PlayState extends MusicBeatState
                         handleInput(0);
                         updateReceptors();
                 }
-                if (cotrols.DOWN_P) {
+                if (controls.DOWN_P) {
                         handleInput(1);
                         updateReceptors();
                 }
@@ -2886,12 +2886,14 @@ class PlayState extends MusicBeatState
                         handleInput(2);
                         updateReceptors();
                 }
-                if (cotrols.RIGHT_P) {
+                if (controls.RIGHT_P) {
                         handleInput(3);
                         updateReceptors();
                 }
-                if (_hitbox.buttonDodge.justPressed) {
-                        handleInput(4);
+                if (if (SONG.song.toLowerCase() == "die-batsards") {
+                        if (_hitbox.buttonDodge.justPressed) {
+                                handleInput(4);
+                        }
                 }
 	}
 
