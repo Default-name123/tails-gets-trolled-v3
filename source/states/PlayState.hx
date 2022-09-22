@@ -387,14 +387,13 @@ class PlayState extends MusicBeatState
 			});
 			
 			Lua_helper.add_callback(lua.state, "initModule", function(path:String)
-            {
-	            var shit = LuaL.dostring(lua.state, openfl.utils.Assets.getText(path));
-	            if (shit != 0)
-		        {
-			        Application.current.window.alert("LUA COMPILE ERROR:\n" + Lua.tostring(lua.state, shit), "Andromeda Engine Modcharts");
-			        System.exit(0);
-		        }
-            });
+                        {
+	                        var shit = LuaL.dostring(lua.state, openfl.utils.Assets.getText(path));
+	                        if (shit != 0) {
+			                Application.current.window.alert("LUA COMPILE ERROR:\n" + Lua.tostring(lua.state, shit), "Andromeda Engine Modcharts");
+			                System.exit(0);
+		                }
+                        });
 
 			Lua_helper.add_callback(lua.state,"playSound", function(sound:String,volume:Float=1,looped:Bool=false){
 				FlxG.sound.play(sound,volume,looped);
@@ -511,6 +510,7 @@ class PlayState extends MusicBeatState
 	{
 		super.create();
 
+                Application.current.window.alert('starting to load the shit', 'debug trace');
 		modchart = new ModChart(this);
 		unnamedLuaSprites=0;
 		currentPState=this;
@@ -549,13 +549,17 @@ class PlayState extends MusicBeatState
 			OptionUtils.getKey(Control.DODGE),
 		];
 
+                Application.current.window.alert('loaded options', 'debug trace');
+
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
 		//lua = new LuaVM();
 		#if cpp
-			luaModchartExists = openfl.utils.Assets.exists('songs:' + Paths.modchart(songData.chartName.toLowerCase()));
+	        luaModchartExists = openfl.utils.Assets.exists('songs:' + Paths.modchart(songData.chartName.toLowerCase()));
 		#end
+
+                Application.current.window.alert('luaModchartExists = ' + luaModchartExists, 'debug trace');
 
 		trace(luaModchartExists);
 		judgeBin = new FlxTypedGroup<JudgeSprite>();
@@ -582,6 +586,8 @@ class PlayState extends MusicBeatState
 		pauseHUD = new FNFCamera();
 		pauseHUD.bgColor.alpha = 0;
 
+                Application.current.window.alert('created cameras', 'debug trace');
+
 		FlxG.cameras.reset(camGame);
 		if(!currentOptions.ratingInHUD)
 			FlxG.cameras.add(camRating);
@@ -595,6 +601,8 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.add(pauseHUD);
 
 		FlxCamera.defaultCameras = [camGame];
+
+                Application.current.window.alert('setup cameras', 'debug trace');
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -634,7 +642,7 @@ class PlayState extends MusicBeatState
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
-
+                Application.current.window.alert('base prefs loaded', 'debug trace');
 
 		switch (songData.chartName.toLowerCase())
 		{
@@ -707,6 +715,8 @@ class PlayState extends MusicBeatState
 		vcrDistortionHUD = new VCRDistortionEffect();
 		vcrDistortionGame = new VCRDistortionEffect();
 
+                Application.current.window.alert('vcr distortion loaded', 'debug trace');
+
 		noteModifier='base';
 		uiModifier='base';
 		curStage=SONG.stage==null?Stage.songStageMap.get(songData.chartName.toLowerCase()):SONG.stage;
@@ -730,7 +740,11 @@ class PlayState extends MusicBeatState
 
 		cancer.alpha=0;
 
+                Application.current.window.alert('cancer?', 'debug trace');
+
 		stage = new Stage(curStage,currentOptions);
+
+                Application.current.window.alert('initiaslised stage', 'debug trace');
 
 		if(currentOptions.noChars && stage.tails!=null)
 			stage.tails.visible=false;
@@ -741,6 +755,8 @@ class PlayState extends MusicBeatState
 			modchart.addCamEffect(highShader);
 			modchart.addNoteEffect(highShader);
 		}
+
+                Application.current.window.alert('initialised high shader', 'debug trace');
 
 		switch(curStage){
 			case 'school' | 'schoolEvil':
@@ -782,7 +798,7 @@ class PlayState extends MusicBeatState
 
 
 
-		/*ameCam3D = new RaymarchEffect();
+		/*gameCam3D = new RaymarchEffect();
 		hudCam3D = new RaymarchEffect();
 		noteCam3D = new RaymarchEffect();
 
@@ -820,6 +836,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.mouse.visible = false;
 
+                Application.current.window.alert('binds done', 'debug trace');
 
 		var gfVersion:String = currentOptions.gfSkin; //stage.gfVersion;
 
@@ -875,6 +892,8 @@ class PlayState extends MusicBeatState
 				focus = 'center';
 		}
 
+                Application.current.window.alert('inited chars', 'debug trace');
+
 
 		if(currentOptions.noChars){
 			focus='center';
@@ -919,12 +938,17 @@ class PlayState extends MusicBeatState
 
 		// startCountdown();
 
+                Application.current.window.alert('generating song', 'debug trace');
+
 		generateSong();
+
+                Application.current.window.alert('finished generating song', 'debug trace');
 
 		loadedShotMechanics = [];
 		loadedShotAnims=[];
 		loadedKillShots=[];
 
+                Application.current.window.alert('shots!!!!!', 'debug trace');
 		if(Assets.exists('songs:' + Paths.chart("shots",songData.chartName.toLowerCase()))){
 			var shit = Song.loadFromJson("shots",songData.chartName.toLowerCase());
 
@@ -959,6 +983,8 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
+
+                Application.current.window.alert('finished shots', 'debug trace');
 
 		//if(loadedShotAnims==null)loadedShotAnims=[];
 		//if(loadedKillShots==null)loadedKillShots=[];
@@ -1001,6 +1027,7 @@ class PlayState extends MusicBeatState
 			healthBar.y = FlxG.height*.1;
 		}
 
+                Application.current.window.alert('healthbar shit', 'debug trace');
 
 		scoreTxt = new FlxText(healthBar.bg.x + healthBar.bg.width / 2 - 150, healthBar.bg.y + 25, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1049,6 +1076,8 @@ class PlayState extends MusicBeatState
 		add(ratingCountersUI);
 		updateJudgementCounters();
 
+                Application.current.window.alert('lots of text', 'debug trace');
+
 		strumLineNotes.cameras = [camReceptor];
 		renderedNotes.cameras = [camNotes];
 		crosshairs.cameras = [camNotes];
@@ -1085,6 +1114,7 @@ class PlayState extends MusicBeatState
 		_hitbox.visible = false;
 		add(_hitbox);
 
+                Application.current.window.alert('android controls pog', 'debug trace');
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
 		// UI_camera.zoom = 1;
@@ -1136,6 +1166,8 @@ class PlayState extends MusicBeatState
 			overlay.scrollFactor.set();
 			add(overlay);
 		}
+
+                Application.current.window.alert('DONE', 'debug trace');
 		if (isStoryMode && playCutscene)
 		{
 			playCutscene=false;
@@ -1317,8 +1349,8 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
-		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN,keyPress);
-		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP,keyRelease);
+		//FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN,keyPress);
+		//FlxG.stage.addEventListener(KeyboardEvent.KEY_UP,keyRelease);
 
 		inCutscene = false;
 		
@@ -1327,6 +1359,7 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0, 1);
 		generateStaticArrows(1, 0);
 
+                Application.current.window.alert('mod manager', 'debug trace');
 		modManager = new ModManager(this);
 		modManager.registerModifiers();
 
@@ -1355,7 +1388,7 @@ class PlayState extends MusicBeatState
 		// for now however, modchart off will save to the same score as the song with modcharts on
 
 		if(startPos>0)canScore=false;
-
+                Application.current.window.alert('MODCHARTS AYO', 'debug trace');
 		#if FORCE_LUA_MODCHARTS
 		setupLuaSystem();
 		#else
@@ -1365,7 +1398,7 @@ class PlayState extends MusicBeatState
 
 
 		var swagCounter:Int = 0;
-
+                Application.current.window.alert('popDown?', 'debug trace');
 		var popup:FlxSprite = new FlxSprite().loadGraphic(Paths.image('popups/${SONG.song.toLowerCase()}'));
 		popup.setGraphicSize(Std.int(popup.width*.85));
 		popup.x -= popup.width;
@@ -1391,6 +1424,7 @@ class PlayState extends MusicBeatState
 
 		add(popup);
 
+                Application.current.window.alert('finished pop down', 'debug trace');
 
 		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{
