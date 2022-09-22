@@ -24,6 +24,7 @@ import openfl.display.GraphicsShader;
 import states.*;
 import flixel.util.FlxColor;
 import ui.*;
+import openfl.utils.Assets;
 typedef LuaProperty = {
     var defaultValue:Any;
     var getter:(State,Any)->Int;
@@ -480,11 +481,11 @@ class LuaSprite extends LuaClass {
 
     var spriteName = Lua.tostring(state,-1);
     var sprite = PlayState.currentPState.luaSprites[spriteName];
-    var fullPath = "assets/songs/" + PlayState.SONG.song.toLowerCase()+"/"+path+".png";
+    var fullPath = "songs:assets/songs/" + PlayState.SONG.song.toLowerCase()+"/"+path+".png";
     var data:BitmapData;
-    if(FileSystem.exists(fullPath) && !FileSystem.isDirectory(fullPath)){
+    if(Assets.exists(fullPath)){
       try{
-        data = BitmapData.fromFile(fullPath);
+        data = Assets.getBitmapData(fullPath);
       }catch(e:Any){
         LuaL.error(state,"FATAL ERROR: " + e);
         return 0;
@@ -503,15 +504,15 @@ class LuaSprite extends LuaClass {
     var spriteName = Lua.tostring(state,-1);
     var sprite = PlayState.currentPState.luaSprites[spriteName];
 
-    var fullPath = "assets/songs/" + PlayState.SONG.song.toLowerCase()+"/"+path;
+    var fullPath = "songs:assets/songs/" + PlayState.SONG.song.toLowerCase()+"/"+path;
     var fullPathXML = fullPath + ".xml";
     var fullPathPNG = fullPath + ".png";
     var bitmapData:BitmapData;
     var content:String;
-    if(FileSystem.exists(fullPathPNG) && !FileSystem.isDirectory(fullPathPNG) && FileSystem.exists(fullPathXML) && !FileSystem.isDirectory(fullPathXML) ){
+    if(Assets.exists(fullPathPNG) && Assets.exists(fullPathXML)){
       try{
-        bitmapData = BitmapData.fromFile(fullPathPNG);
-        content = File.getContent(fullPathXML);
+        bitmapData = Assets.getBitmapData(fullPathPNG);
+        content = Assets.getText(fullPathXML);
       }catch(e:Any){
         LuaL.error(state,"FATAL ERROR: " + e);
         return 0;
