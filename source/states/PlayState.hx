@@ -1183,7 +1183,7 @@ class PlayState extends MusicBeatState
 							startCountdown();
 						}
 						inCutscene=true;
-                                                Application.current.window.alert(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())), 'debug trace');
+                                                //Application.current.window.alert(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())), 'debug trace');
 						video.playVideo(Paths.video(EngineData.cutscenes.get(curSong.toLowerCase())));
 						// videos xd
 					}else
