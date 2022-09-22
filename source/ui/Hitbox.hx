@@ -58,7 +58,7 @@ class Hitbox extends FlxSpriteGroup
                 hitbox.add(add(buttonDown = createhitbox(Std.int(FlxG.width / 4), 0x00FFFF, offsetSec, Std.int(FlxG.width / 4), Std.int(FlxG.height / 4) * 3)));
                 hitbox.add(add(buttonUp = createhitbox(Std.int(FlxG.width / 4) * 2, 0x00FF00, offsetSec, Std.int(FlxG.width / 4), Std.int(FlxG.height / 4) * 3)));
                 hitbox.add(add(buttonRight = createhitbox(Std.int(FlxG.width / 4) * 3, 0xFF0000, offsetSec, Std.int(FlxG.width / 4), Std.int(FlxG.height / 4) * 3)));
-                hitbox.add(add(buttonDodge = createhitbox(0, 0x636363, offsetFir, FlxG.width, Std.int(FlxG.height / 4))));
+                hitbox.add(add(buttonDodge = createhitbox(0, 0xFFFF00, offsetFir, FlxG.width, Std.int(FlxG.height / 4))));
        }
     }
     
