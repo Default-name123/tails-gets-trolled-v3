@@ -44,7 +44,7 @@ class MusicBeatSubstate extends FlxSubState
 		FlxG.cameras.add(padsubcam);
 		padsubcam.bgColor.alpha = 0;
 		virtualpad.cameras = [padsubcam];
-		add(_virtualpad);
+		add(virtualpad);
 	}
 	#else
 	public function addVirtualPad(?DPad, ?Action){};
