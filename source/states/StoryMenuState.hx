@@ -238,7 +238,7 @@ class StoryMenuState extends MusicBeatState
 		if(clickTimer>=1){
 			pissOff=0;
 		}
-		if (controls.BACK && !movedBack && !selectedWeek)
+		if ((controls.BACK || FlxG.android.justReleased.BACK) && !movedBack && !selectedWeek)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			movedBack = true;
