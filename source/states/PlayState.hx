@@ -503,12 +503,7 @@ class PlayState extends MusicBeatState
 				FlxG.log.advanced(error, EngineData.LUAERROR, true);
 			}
 
-			// this catches compile errors
-			try {
-				lua.run(openfl.utils.Assets.getText(Paths.modchart(songData.chartName.toLowerCase())));
-			}catch (e:Exception){
-				FlxG.log.advanced(e, EngineData.LUAERROR, true);
-			};
+			lua.run(openfl.utils.Assets.getText(Paths.modchart(songData.chartName.toLowerCase())));
 		}
 	}
 
