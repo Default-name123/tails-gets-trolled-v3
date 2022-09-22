@@ -2184,7 +2184,7 @@ class PlayState extends MusicBeatState
 			health=0;
 		}
 		previousHealth=health;
-		if (controls.PAUSE && startedCountdown && canPause)
+		if ((controls.PAUSE || FlxG.android.justReleased.BAC) && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
 			persistentDraw = true;
