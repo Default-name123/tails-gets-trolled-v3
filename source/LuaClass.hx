@@ -483,17 +483,7 @@ class LuaSprite extends LuaClass {
     var sprite = PlayState.currentPState.luaSprites[spriteName];
     var fullPath = "songs:assets/songs/" + PlayState.SONG.song.toLowerCase()+"/"+path+".png";
     var data:BitmapData;
-    if(Assets.exists(fullPath)){
-      try{
-        data = Assets.getBitmapData(fullPath);
-      }catch(e:Any){
-        LuaL.error(state,"FATAL ERROR: " + e);
-        return 0;
-      }
-    }else{
-      LuaL.error(state,path + " is not a valid image file!");
-      return 0;
-    }
+    data = Assets.getBitmapData(fullPath);
     sprite.loadGraphic(data,animated,0,0,false,spriteName);
     return 0;
   }
@@ -509,18 +499,8 @@ class LuaSprite extends LuaClass {
     var fullPathPNG = fullPath + ".png";
     var bitmapData:BitmapData;
     var content:String;
-    if(Assets.exists(fullPathPNG) && Assets.exists(fullPathXML)){
-      try{
-        bitmapData = Assets.getBitmapData(fullPathPNG);
-        content = Assets.getText(fullPathXML);
-      }catch(e:Any){
-        LuaL.error(state,"FATAL ERROR: " + e);
-        return 0;
-      }
-    }else{
-      LuaL.error(state,path + " is not a valid spritesheet!");
-      return 0;
-    }
+    bitmapData = Assets.getBitmapData(fullPathPNG);
+    content = Assets.getText(fullPathXML);
     var frames = FlxAtlasFrames.fromSparrow(bitmapData,content);
     sprite.setFrames(frames);
     return 0;
@@ -1837,11 +1817,7 @@ class LuaModMgr extends LuaClass {
     Lua.getfield(state,1,"className");
     var className = Lua.tostring(state,-1);
     var mgr = PlayState.currentPState.luaObjects[className];
-    try{
-      mgr.queueEase(step,eStep,modN,perc,ease,player);
-    }catch(e){
-      trace(e.stack,e.message);
-    }
+    mgr.queueEase(step,eStep,modN,perc,ease,player);
     return 0;
   }
 
@@ -1868,11 +1844,7 @@ class LuaModMgr extends LuaClass {
     Lua.getfield(state,1,"className");
     var className = Lua.tostring(state,-1);
     var mgr = PlayState.currentPState.luaObjects[className];
-    try{
-      mgr.queueEaseL(step,len,modN,perc,ease,player);
-    }catch(e){
-      trace(e.stack,e.message);
-    }
+    mgr.queueEaseL(step,len,modN,perc,ease,player);
     return 0;
   }
 
