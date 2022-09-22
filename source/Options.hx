@@ -106,7 +106,6 @@ class Options
 	public var noFail:Bool = false;
 	public var useEpic:Bool = true;
         public var mechsInputVariants:Bool = true;
-        public var hitboxOpacity:Float = 0.3;
 
 	// appearance
 	public var useNotesplashes:Bool = true;
@@ -127,6 +126,7 @@ class Options
 	public var judgeY:Float = 0;
 	public var fcBasedComboColor:Bool = false;
 	public var ruinMod:Bool = false;
+        public var hitboxOpacity:Float = 0.3;
 
 	// tgt options
 	public var getHigh:Bool = true;
