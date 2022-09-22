@@ -97,10 +97,6 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-	  #if android
-    addVirtualPad(FULL, A_B);
-    #end
-        
 		super.create();
 		FlxG.mouse.visible=true;
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
@@ -412,7 +408,7 @@ class FreeplayState extends MusicBeatState
 		if (controls.RIGHT_P)
 			changeDiff(1);
 
-		if (controls.BACK)
+		if (controls.BACK || FlxG.android.justReleased.BACK)
 		{
 			FlxG.switchState(new SidemenuState());
 		}
