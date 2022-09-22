@@ -51,7 +51,7 @@
 		0,
 		0
 	],
-	"flipX": false,
+	"flipX": true,
 	"antialiasing": true,
 	"iconName": "bf-ch3",
 	"beatDancer": false,

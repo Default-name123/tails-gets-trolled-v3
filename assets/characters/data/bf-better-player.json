@@ -161,7 +161,7 @@
 			"name": "singUP-alt"
 		}
 	],
-	"flipX": false,
+	"flipX": true,
 	"antialiasing": true,
 	"iconName": "bf",
 	"beatDancer": false,
