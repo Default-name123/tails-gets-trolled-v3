@@ -74,7 +74,7 @@ class Paths
 	// TRY FOREVER ENGINE, SERIOUSLY!
 
 	public static function noteskinManifest(skin:String,?library:String='skins'):Note.SkinManifest{
-		var path = 'assets/images/${library}/${skin}/metadata.json';
+		var path = '${library}:assets/images/${library}/${skin}/metadata.json';
 		return Json.parse(OpenFlAssets.getText(path));
 		/*}else if(FileSystem.exists(path)){
 			return Json.parse(File.getContent(path));
@@ -88,8 +88,14 @@ class Paths
 		if(Cache.pathCache.exists(internalName)){
 			return Cache.pathCache.get(internalName);
 		}
+                var noteTypeThing:String = '';
+                if(noteType!='' && noteType!='default' && noteType!='receptor') {
+                        noteTypeThing = noteType + '/';
+                }
+                return 'default:assets/images/skins/${skin}/${modifier}/${noteTypeThing}${key}
 
-		var pathsNotetype:Array<String> = [
+                // (sirox) fuck this
+		/*var pathsNotetype:Array<String> = [
 			'assets/images/${library}/${skin}/${modifier}/${noteType}/${key}',
 			'assets/images/${library}/${skin}/base/${noteType}/${key}',
 			'assets/images/${library}/default/base/${noteType}/${key}',
@@ -116,7 +122,7 @@ class Paths
 					idx++;
 				}
 				trace(path);
-			}/*else{
+			}else{
 				while(idx<pathsNoNotetype.length){
 					path = pathsNoNotetype[idx];
 					if(FileSystem.exists(path))
@@ -124,7 +130,7 @@ class Paths
 
 					idx++;
 				}
-			}*/
+			}
 
 			if(!OpenFlAssets.exists(path)){
 				return noteSkinPath(key,library,skin,modifier,noteType,false);
@@ -132,7 +138,7 @@ class Paths
 
 			Cache.pathCache.set(internalName,path);
 			return path;
-		/*}else{
+		}else{
 			if(noteType!='' && noteType!='default'){
 				while(idx<pathsNotetype.length){
 					path = pathsNotetype[idx];
@@ -160,11 +166,11 @@ class Paths
 
 	public static function noteSkinImage(key:String, ?library:String='skins', ?skin:String='default', modifier:String='base', noteType:String='', ?useOpenFLAssetSystem:Bool=true):FlxGraphicAsset{
 			var pngPath = noteSkinPath('${key}.png',library,skin,modifier,noteType,useOpenFLAssetSystem);
-			if(OpenFlAssets.exists(pngPath)){
+			//if(OpenFlAssets.exists(pngPath)){
 				return pngPath;
-			}else{
-				return noteSkinImage(key,library,skin,modifier,noteType,false);
-			}
+			//}else{
+				//return noteSkinImage(key,library,skin,modifier,noteType,false);
+			//}
 		/*}else{
 			var bitmapName:String = '${key}-${library}-${skin}-${modifier}-${noteType}';
 			var doShit=FlxG.bitmap.checkCache(bitmapName);
@@ -187,11 +193,11 @@ class Paths
 
 	public static function noteSkinText(key:String, ?library:String='skins', ?skin:String='default', modifier:String='base', noteType:String='', ?useOpenFLAssetSystem:Bool=true):String{
 			var path = noteSkinPath('${key}',library,skin,modifier,noteType,useOpenFLAssetSystem);
-			if(OpenFlAssets.exists(path)){
+			//if(OpenFlAssets.exists(path)){
 				return OpenFlAssets.getText(path);
-			}else{
+			/*}else{
 				return noteSkinText(key,library,skin,modifier,noteType,false);
-			}
+			}"/
 		/*}else{
 			var path = noteSkinPath('${key}',library,skin,modifier,noteType,useOpenFLAssetSystem);
 			if(FileSystem.exists(path)){
@@ -203,16 +209,16 @@ class Paths
 
 	public static function noteSkinAtlas(key:String, ?library:String='skins', ?skin:String='default', modifier:String='base', noteType:String='', ?useOpenFLAssetSystem:Bool=true):Null<FlxAtlasFrames>{
 			var pngPath = noteSkinPath('${key}.png',library,skin,modifier,noteType,useOpenFLAssetSystem);
-			if(OpenFlAssets.exists(pngPath)){
+			//if(OpenFlAssets.exists(pngPath)){
 				var xmlPath = noteSkinPath('${key}.xml',library,skin,modifier,noteType,useOpenFLAssetSystem);
 				if(OpenFlAssets.exists(xmlPath)){
 					return FlxAtlasFrames.fromSparrow(pngPath,xmlPath);
 				}else{
 					return getSparrowAtlas('skins/fallback/base/$key','preload');
 				}
-			}else{
+			/*}else{
 				return noteSkinAtlas(key,library,skin,modifier,noteType,false);
-			}
+			}*/
 		/*}else{
 			var xmlData = Cache.getXML(noteSkinPath('${key}.xml',library,skin,modifier,noteType,useOpenFLAssetSystem));
 			if(xmlData!=null){
