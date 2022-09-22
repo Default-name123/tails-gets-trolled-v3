@@ -1,4 +1,4 @@
-local tweenObj = initModule("assets/songs/taste-for-blood/tween.lua")
+local tweenObj = initModule("songs:assets/songs/taste-for-blood/tween.lua")
 local tweens = {}
 
 local shit = {
