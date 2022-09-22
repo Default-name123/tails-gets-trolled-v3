@@ -187,6 +187,9 @@ class CachingState extends FlxUIState {
         if(msg!=null && msg!=recentlyLoadedImg){
           recentlyLoadedImg=msg;
           var id = msg.replace(".png","");
+          if (msg.contains('/characters/') && !msg.startsWith('characters:')) {
+                  msg = 'characters:' + msg;
+          }
           var data:BitmapData = Assets.getBitmapData(msg);
           var graphic = FlxG.bitmap.add(data,true,id);
           graphic.persist=true;
