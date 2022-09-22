@@ -92,7 +92,7 @@ class Paths
                 if(noteType!='' && noteType!='default' && noteType!='receptor') {
                         noteTypeThing = noteType + '/';
                 }
-                return 'default:assets/images/skins/${skin}/${modifier}/${noteTypeThing}${key}'
+                return 'default:assets/images/skins/${skin}/${modifier}/${noteTypeThing}${key}';
 
                 // (sirox) fuck this
 		/*var pathsNotetype:Array<String> = [
