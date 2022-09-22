@@ -25,6 +25,7 @@ import Options;
 import flixel.effects.FlxFlicker;
 import flash.system.System;
 import flixel.system.FlxSound;
+import lime.app.Application;
 
 using StringTools;
 
