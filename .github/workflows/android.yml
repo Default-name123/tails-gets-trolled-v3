@@ -43,8 +43,8 @@ jobs:
 
       - name: Install Haxelibs
         run: |
-          haxelib install lime 7.9.0 --quiet
-          haxelib install openfl 9.1.0 --quiet
+          haxelib install lime 7.9.0
+          haxelib install openfl 9.1.0
           haxelib git flixel https://github.com/sirox228/flixel
           haxelib --never run lime setup
           haxelib install hscript
