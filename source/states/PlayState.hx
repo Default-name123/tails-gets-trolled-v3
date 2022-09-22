@@ -2897,7 +2897,29 @@ class PlayState extends MusicBeatState
                 }
                 if (SONG.song.toLowerCase() == "die-batsards") {
                         if (_hitbox.buttonDodge.justPressed) {
-                                handleInput(4);
+                                pressedKeys[4] = true;
+                                handleDodge();
+                        }
+                }
+                if (controls.LEFT_R) {
+                        pressedKeys[0] = false;
+                        updateReceptors();
+                }
+                if (controls.DOWN_R) {
+                        pressedKeys[1] = false;
+                        updateReceptors();
+                }
+                if (controls.UP_R) {
+                        pressedKeys[2] = false;
+                        updateReceptors();
+                }
+                if (controls.RIGHT_R) {
+                        pressedKeys[3] = false;
+                        updateReceptors();
+                }
+                if (SONG.song.toLowerCase() == "die-batsards") {
+                        if (_hitbox.buttonDodge.justReleased) {
+                                pressedKeys[4] = false;
                         }
                 }
 	}
