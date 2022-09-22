@@ -84,7 +84,7 @@ class PauseSubState extends MusicBeatSubstate
 		}
 		
         #if android
-        addVirtualPad(FULL, A_B);
+        addVirtualPad(UP_DOWN, A);
         #end
 
 		changeSelection();
@@ -99,9 +99,9 @@ class PauseSubState extends MusicBeatSubstate
 
 		super.update(elapsed);
 
-		var upP = controls.UP_P;
-		var downP = controls.DOWN_P;
-		var accepted = controls.ACCEPT;
+		var upP = virtualpad.buttonUp.justPressed;
+		var downP = virtualpad.buttonDown.justPressed;
+		var accepted = virtualpad.buttonA.justPressed;
 
 		if (upP)
 		{
