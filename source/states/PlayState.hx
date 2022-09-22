@@ -2875,18 +2875,22 @@ class PlayState extends MusicBeatState
 
                 // (sirox) i hate input system in andromeda, cuz i need to remake it for each port
                 if (controls.LEFT_P) {
+                        pressedKeys[0] = true;
                         handleInput(0);
                         updateReceptors();
                 }
                 if (controls.DOWN_P) {
+                        pressedKeys[1] = true;
                         handleInput(1);
                         updateReceptors();
                 }
                 if (controls.UP_P) {
+                        pressedKeys[2] = true;
                         handleInput(2);
                         updateReceptors();
                 }
                 if (controls.RIGHT_P) {
+                        pressedKeys[3] = true;
                         handleInput(3);
                         updateReceptors();
                 }
