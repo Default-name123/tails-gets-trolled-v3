@@ -147,7 +147,7 @@ class NoteShader extends FlxShader
     {
         vec4 col = flixel_texture2D(bitmap, openfl_TextureCoordv);
         vec4 newCol = col;
-        if(flash!=0 && col.a>0)
+        if(flash!=0. && col.a>0.)
           newCol = mix(col,vec4(flashR,flashG,flashB,col.a),flash);
 
         gl_FragColor = newCol;
