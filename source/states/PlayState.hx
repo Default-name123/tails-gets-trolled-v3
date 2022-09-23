@@ -238,8 +238,8 @@ class PlayState extends MusicBeatState
 
 	var phillyCityLights:FlxTypedGroup<FlxSprite>;
 	var lightFadeShader:BuildingEffect;
-	var vcrDistortionHUD:VCRDistortionEffect;
-	var vcrDistortionGame:VCRDistortionEffect;
+	/*var vcrDistortionHUD:VCRDistortionEffect;
+	var vcrDistortionGame:VCRDistortionEffect;*/
 
 	var highShader:HighEffect;
 	var phillyTrain:FlxSprite;
@@ -712,8 +712,8 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence.
 		DiscordClient.changePresence(detailsText + songData.displayName + " (" + storyDifficultyText + ")", iconRPC);
 		#end
-		vcrDistortionHUD = new VCRDistortionEffect();
-		vcrDistortionGame = new VCRDistortionEffect();
+		/*vcrDistortionHUD = null;
+		vcrDistortionGame = null;*/
 
                 //Application.current.window.alert('vcr distortion loaded', 'debug trace');
 
@@ -763,7 +763,7 @@ class PlayState extends MusicBeatState
 				noteModifier='pixel';
 				uiModifier='pixel';
 				if(currentOptions.senpaiShaderStrength>0){ // they're on
-					if(vcrDistortionHUD!=null){
+					/*if(vcrDistortionHUD!=null){
 						if(currentOptions.senpaiShaderStrength>=2){ // sempai shader strength
 							switch(songData.chartName.toLowerCase()){
 								case 'roses':
@@ -792,7 +792,7 @@ class PlayState extends MusicBeatState
 						modchart.addCamEffect(vcrDistortionGame);
 						modchart.addHudEffect(vcrDistortionHUD);
 						modchart.addNoteEffect(vcrDistortionHUD);
-					}
+					}*/
 				}
 		}
 
@@ -2150,10 +2150,10 @@ class PlayState extends MusicBeatState
 		perfectMode = false;
 		#end
 		updatePositions();
-		if(vcrDistortionHUD!=null){
+		/*if(vcrDistortionHUD!=null){
 			vcrDistortionHUD.update(elapsed);
 			vcrDistortionGame.update(elapsed);
-		}
+		}*/
 		if(highShader!=null){
 			highShader.update(elapsed);
 		}
