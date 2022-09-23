@@ -820,7 +820,7 @@ class PlayState extends MusicBeatState
 		tutorialHitThis.scrollFactor.set();
 		dbTutorial.add(tutorialHitThis);
 
-		var tutorialBind = new FlxText(942, 430, 0, 'press DODGE HITBOX to dodge', 20);
+		var tutorialBind = new FlxText(942, 430, 0, 'press DODGE HITBOX \nto dodge', 20);
 		tutorialBind.setFormat(Paths.font("arial.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tutorialBind.scrollFactor.set();
 		dbTutorial.add(tutorialBind);
