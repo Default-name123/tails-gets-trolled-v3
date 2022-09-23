@@ -42,7 +42,7 @@
 			"name": "deathConfirm"
 		}
 	],
-	"flipX": false,
+	"flipX": true,
 	"antialiasing": true,
 	"iconName": "bf",
 	"beatDancer": false,
