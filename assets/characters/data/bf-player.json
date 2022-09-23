@@ -30,7 +30,7 @@
 				-9
 			],
 			"fps": 24,
-			"prefix": "BF NOTE LEFT0",
+			"prefix": "BF NOTE RIGHT0",
 			"name": "singLEFT",
 			"looped": false
 		},
@@ -40,7 +40,7 @@
 				-4
 			],
 			"fps": 24,
-			"prefix": "BF NOTE RIGHT0",
+			"prefix": "BF NOTE LEFT0",
 			"name": "singRIGHT",
 			"looped": false
 		},
@@ -70,7 +70,7 @@
 				39
 			],
 			"fps": 24,
-			"prefix": "BF NOTE RIGHT MISS",
+			"prefix": "BF NOTE LEFT MISS",
 			"name": "singRIGHTmiss",
 			"looped": false
 		},
@@ -80,7 +80,7 @@
 				47
 			],
 			"fps": 24,
-			"prefix": "BF NOTE LEFT MISS",
+			"prefix": "BF NOTE RIGHT MISS",
 			"name": "singLEFTmiss",
 			"looped": false
 		},
