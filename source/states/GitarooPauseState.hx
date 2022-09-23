@@ -48,7 +48,7 @@ class GitarooPauseState extends MusicBeatState
 
 		changeThing();
 
-
+                addVirtualPad(LEFT_RIGHT, A);
 	}
 
 	override function update(elapsed:Float)
